@@ -1,11 +1,12 @@
 header {
+  padding-top: 150px;
+  height: 520px;
   background-color: #25008a;
   background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
 }
 
 header div {
   display: flex;
-  min-height: 150px;
   font-size: 24px;
   margin: 0;
   color: white;

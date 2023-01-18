@@ -15,10 +15,12 @@ html {
  */
 
 body {
-  background-color: #f4f1ec;
+  background-color: #bca074;
 }
 
-
+main {
+  width: 90%;
+}
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
