@@ -42,6 +42,7 @@
     </section>
   </nav>
 
+  <!-- Account holder's avatar and name -->
   <header>
     <div><img src="/images/profile-hex.png"></div>
     <div>
@@ -51,17 +52,15 @@
 
   <!-- Page-specific (main) content here -->
   <main class="container">
-    <section id="new-tweet">
-      <h2>Compose Tweet</h2>
-      <form name="newTweet" action="/tweets" method="POST">
-        <label for="tweet-text">What are you humming about?</label>
-        <span><textarea name="text" id="tweet-text" placeholder="What art thou hummning about?"></textarea></span>
-        <div>
-          <button type="submit">Tweet</button>
-          <output name="counter" class="counter" for="tweet-text">140</output>
-        </div>
-      </form>
-    </section>
+    <!-- New tweet form -->
+    <form name="newTweet" action="/tweets" method="POST">
+      <textarea name="text" placeholder="What art thou hummning about?"></textarea>
+      <div class="new-tweet-but">
+        <button type="submit">Tweet</button>
+        <output name="counter" for="tweet-text">140</output>
+      </div>
+    </form>
+    <!-- Display all tweets -->
   </main>
 </body>
 
