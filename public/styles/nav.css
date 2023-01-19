@@ -6,7 +6,7 @@ nav {
   color: white;
   align-items: center;
   justify-content: space-between;
-  padding-left: 1.5em;
+  padding: 0 1.5em 0 1.5em;
   position: fixed;
 }
 
@@ -15,8 +15,12 @@ nav span {
   font-family: 'Bungee';
 }
 
-nav section p {
-  padding-right: 1.5em;
+nav section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
 }  
 
 nav p {

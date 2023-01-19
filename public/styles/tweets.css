@@ -3,6 +3,7 @@ article {
   transition: box-shadow .3s;
   float: left;
   width: 100%;
+  padding: 10px;
 }
 
 article:hover {
@@ -25,15 +26,15 @@ article header div img {
   height: 40px;
 }
 
+article p {
+  padding-bottom: 10px;
+  border-bottom: 3px solid black;
+}
+
 article footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-article p {
-  padding-bottom: 10px;
-  border-bottom: 3px solid black;
 }
 
 .fa-solid:hover {

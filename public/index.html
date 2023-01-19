@@ -38,25 +38,27 @@
       Tweeter
     </span>
     <section>
-      <p><b>Write</b> a new tweet</p>
-      <a href="#new-tweet"><i class="fa-solid fa-angles-down"></i></a>
+      <p>
+        <b>Write</b> a new tweet
+      </p>
+      <a href="#new-tweet">
+        <i class="fa-solid fa-angles-down"></i>
+      </a>
     </section>
   </nav>
 
   <!-- Account holder's avatar and name -->
   <header class="page-header">
-    <div><img src="/images/profile-hex.png"></div>
-    <div>
-      <h2>Irha Ali</h2>
-    </div>
+    <img src="/images/profile-hex.png">
+    <h2>Irha Ali</h2>
   </header>
 
   <!-- Page-specific (main) content here -->
   <main class="container">
     <!-- New tweet form -->
-    <form name="newTweet" action="/tweets" method="POST">
+    <form name="newTweet" id="new-tweet" action="/tweets" method="POST">
       <textarea name="text" id="tweet-text" placeholder="What art thou hummning about?"></textarea>
-      <div class="new-tweet-but">
+      <div>
         <button type="submit">Tweet</button>
         <output name="counter" id="num-of-char" for="tweet-text">140</output>
       </div>

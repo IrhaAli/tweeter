@@ -5,7 +5,7 @@ form {
   width: 100%;
 }
 
-.new-tweet-but {
+main form {
   display: flex;
   justify-content: space-between;
   width: 100%;
