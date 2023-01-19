@@ -1,0 +1,41 @@
+article {
+  border: 3px solid black;
+  transition: box-shadow .3s;
+  float: left;
+  width: 100%;
+}
+
+article:hover {
+  box-shadow: 0 0 20px rgba(33,33,33,.2); 
+}
+
+
+article header {
+  display: flex;
+  justify-content: space-between;
+}
+
+article header div {
+  display: flex;
+  align-items: center;
+}
+
+article header div img {
+  width: 40px;
+  height: 40px;
+}
+
+article footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+article p {
+  padding-bottom: 10px;
+  border-bottom: 3px solid black;
+}
+
+.fa-solid:hover {
+  color: rgb(149, 65, 65);
+}
