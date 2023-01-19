@@ -5,7 +5,7 @@ form {
   width: 100%;
 }
 
-main form {
+form div {
   display: flex;
   justify-content: space-between;
   width: 100%;
