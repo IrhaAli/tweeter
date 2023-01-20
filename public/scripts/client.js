@@ -37,19 +37,19 @@ $(document).ready(function() {
 
   const validate = function(tweetText) {
     if (!tweetText) {
-      alert('Please type something.');
-      return false;
+      return 'Please type something.';
     } else if (tweetText.length > 140) {
-      alert('You typed too much');
-      return false;
+      return 'You typed too much';
     }
-    return true;
+    return '';
   };
 
   $('form').submit(function(event) {
     event.preventDefault();
-    if (validate($('#tweet-text').val())) {
-      const tweet = { user: 'IrhaAli', text: $('#tweet-text').val() };
+    const tweet = ($('#tweet-text').val());
+    const valMess = (!$('#tweet-text').text() && tweet) ? 'Trying to be malicious, eh. IDIOT MUAHAHAHA' : validate(tweet);
+    if (!valMess) {
+      const tweet = { user: 'IrhaAli', text: tweet };
       $.post("/tweets", tweet)
         .then(function(response) {
           const handle = response['user'];
@@ -62,6 +62,9 @@ $(document).ready(function() {
           $('#tweets-container').prepend($tweet);
         });
       $('#tweet-text').val('');
+    } else {
+      const errorHTML = `<h5>${valMess}</h5>`;
+      $('#new-tweet').append(errorHTML);
     }
   });
 
