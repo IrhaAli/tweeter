@@ -11,7 +11,7 @@ $(document).ready(function() {
   };
 
   const createTweetElement = function(tweet) {
-    let $tweet = $(`
+    const $tweet = $(`
       <article>
       <header>
         <div>
@@ -35,21 +35,34 @@ $(document).ready(function() {
     return $tweet;
   };
 
+  const validate = function(tweetText) {
+    if (!tweetText) {
+      alert('Please type something.');
+      return false;
+    } else if (tweetText.length > 140) {
+      alert('You typed too much');
+      return false;
+    }
+    return true;
+  };
+
   $('form').submit(function(event) {
     event.preventDefault();
-    const tweet = { user: 'IrhaAli', text: $('#tweet-text').val() };
-    $.post("/tweets", tweet)
-      .then(function(response) {
-        const handle = response['user'];
-        response['user'] = {
-          handle,
-          avatars: "/images/profile-hex.png",
-          name: 'Irha'
-        };
-        const $tweet = createTweetElement(response);
-        $('#tweets-container').prepend($tweet);
-      });
-    $('#tweet-text').val('');
+    if (validate($('#tweet-text').val())) {
+      const tweet = { user: 'IrhaAli', text: $('#tweet-text').val() };
+      $.post("/tweets", tweet)
+        .then(function(response) {
+          const handle = response['user'];
+          response['user'] = {
+            handle,
+            avatars: "/images/profile-hex.png",
+            name: 'Irha'
+          };
+          const $tweet = createTweetElement(response);
+          $('#tweets-container').prepend($tweet);
+        });
+      $('#tweet-text').val('');
+    }
   });
 
   const loadTweets = function() {
