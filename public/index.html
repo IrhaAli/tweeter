@@ -59,11 +59,11 @@
   <!-- Page-specific (main) content here -->
   <main class="container">
     <!-- New tweet form -->
-    <form name="newTweet" id="new-tweet" action="/tweets" method="POST">
+    <form id="new-tweet">
       <textarea name="text" id="tweet-text" placeholder="What art thou hummning about?"></textarea>
       <div>
         <button type="submit">Tweet</button>
-        <output name="counter" id="num-of-char" for="tweet-text">140</output>
+        <output id="num-of-char" for="tweet-text">140</output>
       </div>
     </form>
     <!-- Display all tweets -->

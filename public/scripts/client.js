@@ -34,7 +34,6 @@ $(document).ready(function() {
       const $tweet = createTweetElement(tweet);
       // takes return value and appends it to the tweets container
       $('#tweets-container').append($tweet);
-      console.log($('#tweets-container'));
     }
   };
 
@@ -64,5 +63,13 @@ $(document).ready(function() {
   };
 
   renderTweets(data);
+  
+  $('form').submit(function(event) {
+    event.preventDefault();
+    const tweet = $('#new-tweet').serialize();
+    $.post("/", tweet, function(data) {
+      
+    });
+  });
 
 });
