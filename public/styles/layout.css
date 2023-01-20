@@ -6,16 +6,15 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
-/*
- * Global layout stuff
- */
-
 body {
-  background-color: #bca074;
+  background: #f5f1ed;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -23,7 +22,3 @@ main {
   width: 90%;
   margin: 0 auto;
 }
-
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */

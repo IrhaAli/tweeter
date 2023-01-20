@@ -46,11 +46,14 @@ $(document).ready(function() {
 
   $('form').submit(function(event) {
     event.preventDefault();
-    const tweet = ($('#tweet-text').val());
-    const valMess = (!$('#tweet-text').text() && tweet) ? 'Trying to be malicious, eh. IDIOT MUAHAHAHA' : validate(tweet);
+    const tweetText = ($('#tweet-text').val());
+    // Need to protect against mal
+    // const malFree = $('#tweet-text').text(tweetText);
+    // const valMess = (tweetText && !malFree) ? 'Trying to be malicious, eh. IDIOT MUAHAHAHA' : validate(tweetText);
+    const valMess = validate(tweetText);
     if (!valMess) {
-      const tweet = { user: 'IrhaAli', text: tweet };
-      $.post("/tweets", tweet)
+      const tweetObj = { user: 'IrhaAli', text: tweetText };
+      $.post("/tweets", tweetObj)
         .then(function(response) {
           const handle = response['user'];
           response['user'] = {
@@ -63,8 +66,8 @@ $(document).ready(function() {
         });
       $('#tweet-text').val('');
     } else {
-      const errorHTML = `<h5>${valMess}</h5>`;
-      $('#new-tweet').append(errorHTML);
+      const errorHTML = `<h5><i class="fa-solid fa-triangle-exclamation"></i> ${valMess} <i class="fa-solid fa-triangle-exclamation"></i> </h5>`;
+      $('#new-tweet').prepend(errorHTML);
     }
   });
 

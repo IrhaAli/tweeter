@@ -3,6 +3,7 @@ form {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin: 20px 0 20px 0;
 }
 
 form div {
@@ -13,13 +14,40 @@ form div {
 
 textarea {
   width: 100%;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 3px solid black;
+  background-color: transparent;
+  outline: none;
 }
 
 button {
-  
+  background-color: #7589e2;
+  border-radius: 100px;
+  box-shadow: rgba(152, 173, 210, 0.477) 0 -25px 18px -14px inset, rgba(152, 173, 210, 0.477) 0 1px 2px, rgba(152, 173, 210, 0.477) 0 2px 4px, rgba(152, 173, 210, 0.477) 0 4px 8px, rgba(152, 173, 210, 0.477) 0 8px 16px, rgba(152, 173, 210, 0.477) 0 16px 32px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-output {
-  
+button:hover {
+  box-shadow: rgba(94, 125, 169, 0.35) 0 -25px 18px -14px inset, rgba(94, 125, 169, 0.35) 0 1px 2px, rgba(94, 125, 169, 0.35) 0 2px 4px, rgba(94, 125, 169, 0.35) 0 4px 8px, rgba(94, 125, 169, 0.35) 0 8px 16px, rgba(94, 125, 169, 0.35) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
 }
 
+form h5 {
+  width: 100%;
+  border: 3px solid red;
+  color: red;
+  padding: 5px 5px 5px;
+}
