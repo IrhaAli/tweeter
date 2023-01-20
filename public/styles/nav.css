@@ -1,3 +1,4 @@
+/* All nav bar styling */
 nav {
   display: flex;
   height: 120px;
@@ -10,11 +11,13 @@ nav {
   position: fixed;
 }
 
+/* All app name styling */
 nav span {
   font-size: 24px;
   font-family: 'Bungee', cursive;
 }
 
+/* All styling for 'write a new tweet' section */
 nav section {
   display: flex;
   justify-content: center;
@@ -22,6 +25,7 @@ nav section {
   flex-direction: column;
 }  
 
+/* All styling for write a new tweet header */
 nav p {
   font-size: 12px;
 }

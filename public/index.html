@@ -36,7 +36,7 @@
 </head>
 
 <body>
-  <!-- Top nav bar (fixed) -->
+  <!-- Top nav bar (fixed) format: name of app (LHS) and link to write new tweet (RHS) -->
   <nav>
     <span>
       Tweeter
@@ -45,13 +45,11 @@
       <p>
         <b>Write</b> a new tweet
       </p>
-      <a href="#new-tweet">
-        <i class="fa-solid fa-angles-down"></i>
-      </a>
+      <i id="write-new-tweet" class="fa-solid fa-angles-down"></i>
     </section>
   </nav>
 
-  <!-- Account holder's avatar and name -->
+  <!-- Page header format: account holder's avatar (top) and name (bottom) -->
   <header class="page-header">
     <img src="/images/profile-hex.png">
     <h2>Irha Ali</h2>
@@ -60,17 +58,13 @@
   <!-- Page-specific (main) content here -->
   <main class="container">
     <!-- New tweet form -->
-    <form id="new-tweet">
-      <h5 id="errMess"></h5>
-      <textarea name="text" id="tweet-text" placeholder="What art thou hummning about?"></textarea>
-      <div>
-        <button type="submit">Tweet</button>
-        <output id="num-of-char" for="tweet-text">140</output>
-      </div>
-    </form>
+    <form id="new-tweet"></form>
     <!-- Display all tweets -->
     <section id="tweets-container"></section>
   </main>
+
+  <!-- Scroll to the top button -->
+  <section id="scroll-to-top"></section>
 </body>
 
 </html>
