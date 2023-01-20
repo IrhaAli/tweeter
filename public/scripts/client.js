@@ -1,39 +1,12 @@
 // Wrap out code to protect any data from being in global scope.
 $(document).ready(function() {
-  // Fake data taken from initial-tweets.json
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ];
-
   const renderTweets = function(tweets) {
     // loops through tweets
     for (const tweet of tweets) {
       // calls createTweetElement for each tweet
       const $tweet = createTweetElement(tweet);
       // takes return value and appends it to the tweets container
-      $('#tweets-container').append($tweet);
+      $('#tweets-container').prepend($tweet);
     }
   };
 
@@ -62,14 +35,30 @@ $(document).ready(function() {
     return $tweet;
   };
 
-  renderTweets(data);
-  
   $('form').submit(function(event) {
     event.preventDefault();
-    const tweet = $('#new-tweet').serialize();
-    $.post("/", tweet, function(data) {
-      
-    });
+    const tweet = { user: 'IrhaAli', text: $('#tweet-text').val() };
+    $.post("/tweets", tweet)
+      .then(function(response) {
+        const handle = response['user'];
+        response['user'] = {
+          handle,
+          avatars: "/images/profile-hex.png",
+          name: 'Irha'
+        };
+        const $tweet = createTweetElement(response);
+        $('#tweets-container').prepend($tweet);
+      });
+    $('#tweet-text').val('');
   });
 
+  const loadTweets = function() {
+    $.ajax('/tweets', { method: 'GET' })
+      .then(function(response) {
+        const tweets = response;
+        renderTweets(tweets);
+      });
+  };
+
+  loadTweets();
 });
