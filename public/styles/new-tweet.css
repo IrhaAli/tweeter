@@ -45,7 +45,7 @@ button:hover {
   transform: scale(1.05) rotate(-1deg);
 }
 
-form h5 {
+.errMessStyle {
   width: 100%;
   border: 3px solid red;
   color: red;

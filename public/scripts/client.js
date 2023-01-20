@@ -15,7 +15,7 @@ $(document).ready(function() {
       <article>
       <header>
         <div>
-          <img src="${tweet['user']['avatars']}">
+          <img src="${tweet['user']['avatars']}" title="My avatar">
           <h5>&nbsp;${tweet['user']['name']}</h5>
         </div>
         <h5>${tweet['user']['handle']}</h5>
@@ -46,6 +46,8 @@ $(document).ready(function() {
 
   $('form').submit(function(event) {
     event.preventDefault();
+    $('#errMess').removeClass('errMessStyle');
+    $('#errMess').html('');
     const tweetText = ($('#tweet-text').val());
     // Need to protect against mal
     // const malFree = $('#tweet-text').text(tweetText);
@@ -66,8 +68,10 @@ $(document).ready(function() {
         });
       $('#tweet-text').val('');
     } else {
-      const errorHTML = `<h5><i class="fa-solid fa-triangle-exclamation"></i> ${valMess} <i class="fa-solid fa-triangle-exclamation"></i> </h5>`;
-      $('#new-tweet').prepend(errorHTML);
+      const errorHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${valMess} <i class="fa-solid fa-triangle-exclamation"></i>`;
+      // $('#errMess').css.padding = '5px 5px 5px;';
+      $('#errMess').html(errorHTML);
+      $('#errMess').addClass('errMessStyle');
     }
   });
 
