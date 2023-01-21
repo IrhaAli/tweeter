@@ -40,32 +40,22 @@ main {
   border-radius: 4px;
 }
 
-/* Tablet Styles */
-@media only screen and (min-width: 768px) {
-  /* .feature {
-    width: 33.3%;
-    line-height: 600px;
-  }
-
-  .content {
-    width: 66.7%;
-    float: right
-  }
-
-  .footer {
-    clear: right;
-  } */
-}
-
 /* Desktop styles */
 /* WORK IN PROGRESS */
 @media only screen and (min-width: 1024px) {
   .page-header {
-    width: 33.3%;
+    margin-left: 40px;
+    
+    width: 30%;
+    float: left;
+
   }
 
   .container {
-    width: 66.7%;
+    background-position: center;
+    margin-top: 120px;
+    padding-right: 40px;
+    width: 60%;
     float: right
   }
 }

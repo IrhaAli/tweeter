@@ -30,9 +30,9 @@ $(document).ready(function() {
       <footer>
         <h5>${tweet['created_at']}</h5>
         <ul>
-          <a href=""><i class="fa-solid fa-heart"></i></a>
-          <a href=""><i class="fa-solid fa-flag"></i></a>
-          <a href=""><i class="fa-solid fa-retweet"></i></a>
+          <i class="fa-solid fa-heart"></i>
+          <i class="fa-solid fa-flag"></i>
+          <i class="fa-solid fa-retweet"></i>
         </ul>
       </footer>
       </article>`);
