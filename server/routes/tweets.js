@@ -23,9 +23,13 @@ module.exports = function(DataHelpers) {
       return;
     }
 
-    const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
+    const name = req.body.name ? req.body.name : userHelper.generateRandomUser();
     const tweet = {
-      user: user,
+      user: {
+        name,
+        avatar: req.body.avatar,
+        handle: req.body.handle,
+      },
       content: {
         text: req.body.text
       },

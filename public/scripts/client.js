@@ -19,7 +19,7 @@ $(document).ready(function() {
       <article>
       <header>
         <div>
-          <img src="${tweet['user']['avatars']}" title="My avatar">
+          <img src="${tweet['user']['avatar']}" title="My avatar">
           <h5>&nbsp;${tweet['user']['name']}</h5>
         </div>
         <h5>${tweet['user']['handle']}</h5>
@@ -64,15 +64,9 @@ $(document).ready(function() {
     // valid vs. invalid tweet
     if (!valMess) {
       // if tweet is valid send it to the server then prepend it to all tweets and clear textbox/textarea
-      const tweetObj = { user: 'IrhaAli', text: tweetText };
+      const tweetObj = { name: 'Irha', avatar: "/images/profile-hex.png", handle: "IrhaAli", text: tweetText };
       $.post("/tweets", tweetObj)
         .then(function(response) {
-          const handle = response['user'];
-          response['user'] = {
-            handle,
-            avatars: "/images/profile-hex.png",
-            name: 'Irha'
-          };
           const $tweet = createTweetElement(response);
           $('#tweets-container').prepend($tweet);
         });
