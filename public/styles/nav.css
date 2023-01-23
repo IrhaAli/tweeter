@@ -9,23 +9,20 @@ nav {
   justify-content: space-between;
   padding: 0 1.5em 0 1.5em;
   position: fixed;
+  /* All app name styling */
+  /* All styling for 'write a new tweet' section */
+  /* All styling for write a new tweet header */
 }
-
-/* All app name styling */
 nav span {
   font-size: 24px;
-  font-family: 'Bungee', cursive;
+  font-family: "Bungee", cursive;
 }
-
-/* All styling for 'write a new tweet' section */
 nav section {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}  
-
-/* All styling for write a new tweet header */
+}
 nav p {
   font-size: 12px;
 }

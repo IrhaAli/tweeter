@@ -1,0 +1,55 @@
+// SASS Variables
+$border-style: 3px solid black;
+$content-spreading: space-between;
+$display-type: flex;
+$items-alignment: center;
+$header-img-size: 40px;
+$padding: 10px;
+
+/* All tweet post/article styling */
+article {
+  border: $border-style;
+  transition: box-shadow .3s;
+  float: left;
+  width: 100%;
+  padding: $padding;
+  margin-bottom: 20px;
+  
+  /* All header styling */
+  header {
+    display: $display-type;
+    justify-content: $content-spreading;
+
+    div {
+      display: $display-type;
+      align-items: $items-alignment;
+      
+      img {
+        width: $header-img-size;
+        height: $header-img-size;
+      }
+    }
+  }
+    
+  /* All body styling */
+  p {
+    padding-bottom: $padding;
+    border-bottom: $border-style;
+  }
+  
+  /* All footer styling */
+  footer {
+    display: $display-type;
+    align-items: $items-alignment;
+    justify-content: $content-spreading;
+  }
+}
+
+// Hovering over the tweet
+article:hover {
+  box-shadow: 0 0 20px rgba(33,33,33,.2); 
+}
+
+.fa-solid:hover {
+  color: rgb(149, 65, 65);
+}

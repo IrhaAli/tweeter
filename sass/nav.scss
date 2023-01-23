@@ -1,0 +1,38 @@
+// SASS Variables
+$items-alignment: center;
+$small-font-size: 12px;
+$display-type: flex;
+
+/* All nav bar styling */
+nav {
+  display: $display-type;
+  height: 120px;
+  width: 100%;
+  background-color: #4056a1;
+  color: white;
+  align-items: $items-alignment;
+  justify-content: space-between;
+  padding: 0 1.5em 0 1.5em;
+  position: fixed;
+  
+  /* All app name styling */
+  span {
+    font-size: $small-font-size*2;
+    font-family: 'Bungee', cursive;
+  }
+  
+  /* All styling for 'write a new tweet' section */
+  section {
+    display: $display-type;
+    justify-content: center;
+    align-items: $items-alignment;
+    flex-direction: column;
+  }
+  
+  /* All styling for write a new tweet header */
+  p {
+    font-size: $small-font-size;
+  }
+}
+
+

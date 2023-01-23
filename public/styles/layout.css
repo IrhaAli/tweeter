@@ -16,16 +16,14 @@ html {
 /* All body styling */
 body {
   background: #f5f1ed;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
+  /* All styling for the main block */
 }
-
-/* All styling for the main block */
-main {
+body main {
   width: 90%;
   margin: 0 auto;
 }
-
-#scroll-to-top button {
+body #scroll-to-top button {
   position: fixed;
   bottom: 20px;
   right: 30px;
@@ -39,23 +37,21 @@ main {
   padding: 15px;
   border-radius: 4px;
 }
-
-/* Desktop styles */
-/* WORK IN PROGRESS */
 @media only screen and (min-width: 1024px) {
-  .page-header {
+  body .page-header {
     margin-left: 40px;
-    
     width: 30%;
     float: left;
-
+    position: fixed;
+    padding-top: 0px;
+    height: 370px;
+    margin-top: 120px;
   }
-
-  .container {
+  body .container {
     background-position: center;
     margin-top: 120px;
     padding-right: 40px;
     width: 60%;
-    float: right
+    float: right;
   }
 }

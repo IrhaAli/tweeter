@@ -1,30 +1,39 @@
+// SASS Variables
+$display-type: flex;
+$alignment: center;
+$width: 100%;
+$margin: 20px;
+$error-color: red;
+$padding: 5px;
+
 /* All form styling */
 form {
-  display: flex;
+  display: $display-type;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin: 20px 0 20px 0;
+  align-items: $alignment;
+  width: $width;
+  margin: $margin 0 $margin 0;
+
   /* All styling in button and character count section */
-}
-form div {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+  div {
+    display: $display-type;
+    justify-content: space-between;
+    width: $width;
+  }
 }
 
 /* All error message styling */
 .errMessStyle {
-  width: 100%;
-  border: 3px solid red;
-  color: red;
-  padding: 5px 5px 5px;
+  width: $width;
+  border: 3px solid $error-color;
+  color: $error-color;
+  padding: $padding $padding $padding;
 }
 
 /* All textbox/textarea styling */
 textarea {
-  width: 100%;
-  margin-bottom: 20px;
+  width: $width;
+  margin-bottom: $margin;
   border: none;
   border-bottom: 3px solid black;
   background-color: transparent;
@@ -40,8 +49,8 @@ button {
   cursor: pointer;
   display: inline-block;
   font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
-  padding: 7px 20px;
-  text-align: center;
+  padding: 7px 4*$padding;
+  text-align: $alignment;
   text-decoration: none;
   transition: all 250ms;
   border: 0;

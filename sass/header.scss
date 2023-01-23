@@ -1,6 +1,9 @@
+// SASS Variables
+$display-type: flex;
+
 /* All main header styling */
 .page-header {
-  display: flex;
+  display: $display-type;
   padding-top: 150px;
   height: 520px;
   background-color: #df9a00;
@@ -8,11 +11,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
   /* All styling for user name */
-}
-.page-header h2 {
-  display: flex;
-  font-size: 24px;
-  margin: 0;
-  color: white;
+  h2 {
+    display: $display-type;
+    font-size: 24px;
+    margin: 0;
+    color: white;
+  }
 }
