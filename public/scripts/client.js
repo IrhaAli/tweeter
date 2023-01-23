@@ -20,14 +20,14 @@ $(document).ready(function() {
       <article>
       <header>
         <div>
-          <img src="${tweet['user']['avatar']}" title="My avatar">
-          <h5>&nbsp;${tweet['user']['name']}</h5>
+          <img src="${tweet.user.avatar}" title="My avatar">
+          <h5>&nbsp;${tweet.user.name}</h5>
         </div>
-        <h5>${tweet['user']['handle']}</h5>
+        <h5>${tweet.user.handle}</h5>
       </header>
       <p class="tweet-content"></p>
       <footer>
-        <h5>${timeago.format(tweet['created_at'])}</h5>
+        <h5>${timeago.format(tweet.createdAt)}</h5>
         <ul>
           <i class="fa-solid fa-heart"></i>
           <i class="fa-solid fa-flag"></i>
@@ -35,6 +35,7 @@ $(document).ready(function() {
         </ul>
       </footer>
       </article>`);
+    // To avoid cross-site scripting
     $tweet.find('.tweet-content').text(tweet.content.text);
     return $tweet;
   };
@@ -61,7 +62,6 @@ $(document).ready(function() {
     const validTweet = validate($tweetText);
     // valid vs. invalid tweet
     if (!validTweet) {
-      // if not valid then compose error message and add styling to it
       $('#errMess').css("display", "block");
       return;
     }
@@ -93,7 +93,6 @@ $(document).ready(function() {
     if ($('form').css("display") !== "none") {
       $('form').css("display", "none");
     } else {
-      // format by row: optional h5 for any error message then textarea then submit button and character count
       $('form').css("display", "block");
     }
   });
@@ -103,16 +102,16 @@ $(document).ready(function() {
   window.addEventListener("scroll", () => {
     // Make the button appear vs. remove when user manually scrolls up
     if (window.pageYOffset > 20) {
-      $('#scroll-to-top').html('<button type="click" title="Go to top">Top</button>');
+      $('#scroll-to-top').css("display", "block");
     } else {
-      $('#scroll-to-top').html('');
+      $('#scroll-to-top').css("display", "none");
     }
   });
 
   // When the user clicks on the button, scroll to the top of the page
   $('#scroll-to-top').click(function() {
     window.scrollTo(0, 0);
-    $('#scroll-to-top').html('');
+    $('#scroll-to-top').css("display", "none");
   });
 });
 

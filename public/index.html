@@ -57,13 +57,13 @@
 
   <!-- Page-specific (main) content here -->
   <main class="container">
-    <!-- New tweet form -->
+    <!-- New tweet form format: error message (optional), textarea, tweet button (bottom-left) and character-count (bottom-right) -->
     <form>
-      <h5 id='errMess' class="errMessStyle">
-      </h5>
+      <h5 id='errMess' class="errMessStyle"></h5>
       <textarea name='text' type='text' placeholder='What art thou hummning about?'></textarea>
       <div>
-        <button type='submit'>Tweet</button><output id="counter" for='tweet-text'>140</output>
+        <button type='submit'>Tweet</button>
+        <output id="counter" for='tweet-text'>140</output>
       </div>
     </form>
     <!-- Display all tweets -->
@@ -71,7 +71,7 @@
   </main>
 
   <!-- Scroll to the top button -->
-  <section id="scroll-to-top"></section>
+  <button type="click" title="Go to top" id="scroll-to-top">Top</button>
 </body>
 
 </html>

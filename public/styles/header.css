@@ -8,8 +8,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* All styling for user name */
 }
+
+/* All styling for user name */
 .page-header h2 {
   display: flex;
   font-size: 24px;
