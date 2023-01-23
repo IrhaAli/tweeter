@@ -42,7 +42,7 @@ $(document).ready(function() {
   // Validates the tweet submitted
   const validate = function(tweetText) {
     if (!tweetText) {
-      return 'Please type something.';
+      return 'Please type something and be sure that it is not malicious';
     } else if (tweetText.length > 140) {
       return 'You typed too much';
     }
@@ -57,20 +57,18 @@ $(document).ready(function() {
     $('#errMess').html('');
 
     // Get validity of the tweet NEEDS TO PROTECT AGAINS MAL
-    const tweetText = ($('#tweet-text').val());
-    const malFree = $('#tweet-text').text(tweetText);
-    const valMess = (tweetText && !malFree) ? 'Trying to be malicious, eh. IDIOT MUAHAHAHA' : validate(tweetText);
-
+    const $tweetText = $('textarea').val();
+    const valMess = validate($tweetText);
     // valid vs. invalid tweet
     if (!valMess) {
       // if tweet is valid send it to the server then prepend it to all tweets and clear textbox/textarea
-      const tweetObj = { name: 'Irha', avatar: "/images/profile-hex.png", handle: "IrhaAli", text: tweetText };
+      const tweetObj = { name: 'Irha', avatar: "/images/profile-hex.png", handle: "@IrhaAli", text: $tweetText };
       $.post("/tweets", tweetObj)
         .then(function(response) {
           const $tweet = createTweetElement(response);
           $('#tweets-container').prepend($tweet);
         });
-      $('#tweet-text').val('');
+      $('textarea').val('');
     } else {
       // if not valid then compose error message and add styling to it
       const errorHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${valMess} <i class="fa-solid fa-triangle-exclamation"></i>`;
@@ -93,12 +91,11 @@ $(document).ready(function() {
   // Deals with form appearance/disappearance
   $('#write-new-tweet').click(function() {
     // hide vs. show the form
-    if ($('#new-tweet').html()) {
-      $('#new-tweet').html('');
+    if ($('form').html()) {
+      $('form').html('');
     } else {
       // format by row: optional h5 for any error message then textarea then submit button and character count
-      const form = $("<h5 id='errMess'></h5> <textarea name='text' id='tweet-text' placeholder='What art thou hummning about?'></textarea><div><button type='submit'>Tweet</button><output id='num-of-char' for='tweet-text'>140</output></div>");
-      $('#new-tweet').html(form);
+      $('form').html("<h5 id='errMess'></h5> <textarea name='text' type='text' placeholder='What art thou hummning about?'></textarea><div><button type='submit'>Tweet</button><output for='tweet-text'>140</output></div>");
     }
   });
 
