@@ -24,6 +24,7 @@ body {
 body main {
   width: 90%;
   margin: 0 auto;
+  padding-top: 20px;
 }
 
 /* All styling for scroll to top button */
@@ -59,7 +60,7 @@ body main {
   /* Tweets container on the right hand side */
   body .container {
     background-position: center;
-    margin-top: 120px;
+    margin-top: 140px;
     padding-right: 40px;
     width: 60%;
     float: right;

@@ -25,6 +25,7 @@ body {
   main {
     width: 90%;
     margin: 0 auto;
+    padding-top: 20px;
   }
 
   // All styling for scroll up button
@@ -58,7 +59,7 @@ body {
 
     .container {
       background-position: center;
-      margin-top: 120px;
+      margin-top: 140px;
       padding-right: 40px;
       width: 90%-$desktop-header-width;
       float: right;
