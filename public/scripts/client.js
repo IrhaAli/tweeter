@@ -1,5 +1,6 @@
 // Wrap out code to protect any data from being in global scope.
 $(document).ready(function() {
+
   // Renders the articles/tweets provided
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
@@ -24,11 +25,9 @@ $(document).ready(function() {
         </div>
         <h5>${tweet['user']['handle']}</h5>
       </header>
-      <p>
-        ${tweet['content']['text']}
-      </p>
+      <p class="tweet-content"></p>
       <footer>
-        <h5>${tweet['created_at']}</h5>
+        <h5>${timeago.format(tweet['created_at'])}</h5>
         <ul>
           <i class="fa-solid fa-heart"></i>
           <i class="fa-solid fa-flag"></i>
@@ -36,45 +35,45 @@ $(document).ready(function() {
         </ul>
       </footer>
       </article>`);
+    $tweet.find('.tweet-content').text(tweet.content.text);
     return $tweet;
   };
 
   // Validates the tweet submitted
   const validate = function(tweetText) {
     if (!tweetText) {
-      return 'Please type something and be sure that it is not malicious';
+      $('#errMess').text('Please type something');
+      return false;
     } else if (tweetText.length > 140) {
-      return 'You typed too much';
+      $('#errMess').text('You typed too much');
+      return false;
     }
-    return '';
+    return true;
   };
 
   // Deals with the event of form submission
   $('form').submit(function(event) {
     // Initial settings
     event.preventDefault();
-    $('#errMess').removeClass('errMessStyle');
-    $('#errMess').html('');
 
     // Get validity of the tweet NEEDS TO PROTECT AGAINS MAL
     const $tweetText = $('textarea').val();
-    const valMess = validate($tweetText);
+    const validTweet = validate($tweetText);
     // valid vs. invalid tweet
-    if (!valMess) {
-      // if tweet is valid send it to the server then prepend it to all tweets and clear textbox/textarea
-      const tweetObj = { name: 'Irha', avatar: "/images/profile-hex.png", handle: "@IrhaAli", text: $tweetText };
-      $.post("/tweets", tweetObj)
-        .then(function(response) {
-          const $tweet = createTweetElement(response);
-          $('#tweets-container').prepend($tweet);
-        });
-      $('textarea').val('');
-    } else {
+    if (!validTweet) {
       // if not valid then compose error message and add styling to it
-      const errorHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${valMess} <i class="fa-solid fa-triangle-exclamation"></i>`;
-      $('#errMess').html(errorHTML);
-      $('#errMess').addClass('errMessStyle');
+      $('#errMess').css("display", "block");
+      return;
     }
+    // if tweet is valid send it to the server then prepend it to all tweets and clear textbox/textarea
+    const tweetObj = { name: 'Irha', avatar: "/images/profile-hex.png", handle: "@IrhaAli", text: $tweetText };
+    $.post("/tweets", tweetObj)
+      .then(function(response) {
+        $('#errMess').css("display", "none");
+        const $tweet = createTweetElement(response);
+        $('#tweets-container').prepend($tweet);
+        $('textarea').val('');
+      });
   });
 
   // Loads the tweets when page is visited/reloaded by user
@@ -91,11 +90,11 @@ $(document).ready(function() {
   // Deals with form appearance/disappearance
   $('#write-new-tweet').click(function() {
     // hide vs. show the form
-    if ($('form').html()) {
-      $('form').html('');
+    if ($('form').css("display") !== "none") {
+      $('form').css("display", "none");
     } else {
       // format by row: optional h5 for any error message then textarea then submit button and character count
-      $('form').html("<h5 id='errMess'></h5> <textarea name='text' type='text' placeholder='What art thou hummning about?'></textarea><div><button type='submit'>Tweet</button><output for='tweet-text'>140</output></div>");
+      $('form').css("display", "block");
     }
   });
 

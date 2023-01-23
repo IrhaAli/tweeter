@@ -58,7 +58,14 @@
   <!-- Page-specific (main) content here -->
   <main class="container">
     <!-- New tweet form -->
-    <form></form>
+    <form>
+      <h5 id='errMess' class="errMessStyle">
+      </h5>
+      <textarea name='text' type='text' placeholder='What art thou hummning about?'></textarea>
+      <div>
+        <button type='submit'>Tweet</button><output id="counter" for='tweet-text'>140</output>
+      </div>
+    </form>
     <!-- Display all tweets -->
     <section id="tweets-container"></section>
   </main>
