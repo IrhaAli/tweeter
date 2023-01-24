@@ -32,6 +32,8 @@ article header div img {
 article p {
   padding-bottom: 10px;
   border-bottom: 3px solid black;
+  overflow:hidden;
+  overflow-x: scroll;
 }
 
 /* All footer styling */
@@ -44,3 +46,4 @@ article footer {
 .fa-solid:hover {
   color: rgb(149, 65, 65);
 }
+

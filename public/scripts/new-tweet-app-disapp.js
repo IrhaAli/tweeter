@@ -5,6 +5,7 @@ $(document).ready(function() {
       $('form').css("display", "none");
     } else {
       $('form').css("display", "block");
+      window.scrollTo(0, 0);
     }
   });
 });
