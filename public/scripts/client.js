@@ -1,6 +1,4 @@
-// Wrap out code to protect any data from being in global scope.
 $(document).ready(function() {
-
   // Renders the articles/tweets provided
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
@@ -40,6 +38,17 @@ $(document).ready(function() {
     return $tweet;
   };
 
+  // Loads the tweets when page is visited/reloaded by user
+  const loadTweets = function() {
+    $.ajax('/tweets', { method: 'GET' })
+      .then(function(response) {
+        const tweets = response;
+        renderTweets(tweets);
+      });
+  };
+
+  loadTweets();
+
   // Validates the tweet submitted
   const validate = function(tweetText) {
     if (!tweetText) {
@@ -75,44 +84,6 @@ $(document).ready(function() {
         $('textarea').val('');
         $('#counter').text('140');
       });
-  });
-
-  // Loads the tweets when page is visited/reloaded by user
-  const loadTweets = function() {
-    $.ajax('/tweets', { method: 'GET' })
-      .then(function(response) {
-        const tweets = response;
-        renderTweets(tweets);
-      });
-  };
-
-  loadTweets();
-
-  // Deals with form appearance/disappearance
-  $('#write-new-tweet').click(function() {
-    // hide vs. show the form
-    if ($('form').css("display") !== "none") {
-      $('form').css("display", "none");
-    } else {
-      $('form').css("display", "block");
-    }
-  });
-
-  // Scroll to the top button
-  // When user scrolls down show the button
-  window.addEventListener("scroll", () => {
-    // Make the button appear vs. remove when user manually scrolls up
-    if (window.pageYOffset > 20) {
-      $('#scroll-to-top').css("display", "block");
-    } else {
-      $('#scroll-to-top').css("display", "none");
-    }
-  });
-
-  // When the user clicks on the button, scroll to the top of the page
-  $('#scroll-to-top').click(function() {
-    window.scrollTo(0, 0);
-    $('#scroll-to-top').css("display", "none");
   });
 });
 
