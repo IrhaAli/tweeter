@@ -66,9 +66,10 @@ $(document).ready(function() {
     // Initial settings
     event.preventDefault();
 
-    // Get validity of the tweet NEEDS TO PROTECT AGAINS MAL
+    // Get validity of the tweet
     const $tweetText = $('textarea').val();
     const validTweet = validate($tweetText);
+    
     // valid vs. invalid tweet
     if (!validTweet) {
       $('#errMess').css("display", "block");
