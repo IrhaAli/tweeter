@@ -83,7 +83,7 @@ $(document).ready(function() {
         const $tweet = createTweetElement(response);
         $('#tweets-container').prepend($tweet);
         $('textarea').val('');
-        $('#counter').text('140');
+        $('output').text('140');
       });
   });
 });
