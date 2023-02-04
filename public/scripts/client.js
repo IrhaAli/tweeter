@@ -1,20 +1,27 @@
-$(document).ready(function() {
-  // Renders the articles/tweets provided
-  const renderTweets = function(tweets) {
-    for (const tweet of tweets) {
-      const $tweet = createTweetElement(tweet);
-      $('#tweets-container').prepend($tweet);
-    }
-  };
+$(document).ready(() => {
+  // Loads the tweets when the page is first visited or refreshed
+  loadTweets();
 
-  // Returns a tweet element for the tweet provided
-  const createTweetElement = function(tweet) {
-    /* Tweet format:
+  // Deals with the event of form submission
+  $('form').on('submit', submitTweet);
+});
+
+// Renders the articles/tweets provided
+const renderTweets = function(tweets) {
+  for (const tweet of tweets) {
+    const $tweet = createTweetElement(tweet);
+    $('#tweets-container').prepend($tweet);
+  }
+};
+
+// Returns a tweet element for the tweet provided
+const createTweetElement = function(tweet) {
+  /* Tweet format:
       header: avatar, name and userid
       body: the tweet
       footer: timestamp and like, flag, share icons
     */
-    const $tweet = $(`
+  const $tweet = $(`
       <article>
       <header>
         <div>
@@ -33,58 +40,55 @@ $(document).ready(function() {
         </ul>
       </footer>
       </article>`);
-    // To avoid cross-site scripting
-    $tweet.find('.tweet-content').text(tweet.content.text);
-    return $tweet;
-  };
+  // To avoid cross-site scripting
+  $tweet.find('.tweet-content').text(tweet.content.text);
+  return $tweet;
+};
 
-  // Loads the tweets when page is visited/reloaded by user
-  const loadTweets = function() {
-    $.ajax('/tweets', { method: 'GET' })
-      .then(function(response) {
-        const tweets = response;
-        renderTweets(tweets);
-      });
-  };
+// Loads the tweets when page is visited/reloaded by user
+const loadTweets = function() {
+  $.ajax('/tweets', { method: 'GET' })
+    .then(function(response) {
+      const tweets = response;
+      renderTweets(tweets);
+    });
+};
 
-  loadTweets();
+// Validates the tweet submitted
+const validate = function(tweetText) {
+  if (!tweetText) {
+    $('#errMess').text('Please type something');
+    return false;
+  } else if (tweetText.length > 140) {
+    $('#errMess').text('You typed too much');
+    return false;
+  }
+  return true;
+};
 
-  // Validates the tweet submitted
-  const validate = function(tweetText) {
-    if (!tweetText) {
-      $('#errMess').text('Please type something');
-      return false;
-    } else if (tweetText.length > 140) {
-      $('#errMess').text('You typed too much');
-      return false;
-    }
-    return true;
-  };
+const submitTweet = function(event) {
+  // Initial settings
+  event.preventDefault();
+  const $errorMessage = $(this).find('#errMess');
+  const $textArea = $(this).find('textarea');
 
-  // Deals with the event of form submission
-  $('form').submit(function(event) {
-    // Initial settings
-    event.preventDefault();
+  // Get validity of the tweet
+  const $tweetText = $textArea.val();
+  const validTweet = validate($tweetText);
 
-    // Get validity of the tweet
-    const $tweetText = $('textarea').val();
-    const validTweet = validate($tweetText);
-    
-    // valid vs. invalid tweet
-    if (!validTweet) {
-      $('#errMess').css("display", "block");
-      return;
-    }
-    // if tweet is valid send it to the server then prepend it to all tweets and clear textbox/textarea
-    const tweetObj = { name: 'Irha', avatar: "/images/profile-hex.png", handle: "@IrhaAli", text: $tweetText };
-    $.post("/tweets", tweetObj)
-      .then(function(response) {
-        $('#errMess').css("display", "none");
-        const $tweet = createTweetElement(response);
-        $('#tweets-container').prepend($tweet);
-        $('textarea').val('');
-        $('output').text('140');
-      });
-  });
-});
-
+  // valid vs. invalid tweet
+  if (!validTweet) {
+    $errorMessage.css("display", "block");
+    return;
+  }
+  // if tweet is valid send it to the server then prepend it to all tweets and clear textbox/textarea
+  const tweetObj = { name: 'Irha', avatar: "/images/profile-hex.png", handle: "@IrhaAli", text: $tweetText };
+  $.post("/tweets", tweetObj)
+    .then(function(response) {
+      $errorMessage.css("display", "none");
+      const $tweet = createTweetElement(response);
+      $('#tweets-container').prepend($tweet);
+      $textArea.val('');
+      $(this).find('output').text('140');
+    });
+};
