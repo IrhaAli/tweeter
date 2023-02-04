@@ -16,6 +16,9 @@ The server side has been put together by [@lighthouse-labs](https://github.com/l
 
 - Express
 - Node 5.10.x or above
+- Body-parser
+- Chance
+- md5
 
 ## Final Product
 

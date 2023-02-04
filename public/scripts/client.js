@@ -51,6 +51,9 @@ const loadTweets = function() {
     .then(function(response) {
       const tweets = response;
       renderTweets(tweets);
+    })
+    .catch(function(error) {
+      console.log(error);
     });
 };
 
@@ -90,5 +93,8 @@ const submitTweet = function(event) {
       $('#tweets-container').prepend($tweet);
       $textArea.val('');
       $(this).find('output').text('140');
+    })
+    .catch(function(error) {
+      console.log(error);
     });
 };
